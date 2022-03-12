@@ -33,13 +33,36 @@ public class Scraper extends Thread {
 			
 			for (Element product : products) {
 				String toyName = product.select(productNameClass).text();
-				System.out.println("Toy name: " + toyName);
+				String toyPrice = product.select(productPriceClass).text();
+				String amazonPrice = searchAmazon(toyName);
+				System.out.println("Toy name: " + toyName + " Argos price:" + toyPrice + " Amazon price: " + amazonPrice);
 			}
 		} catch (IOException ioe) {
 			ioe.printStackTrace();
 		}
 		
 	}
+	
+	public String searchAmazon(String amazonProductTitle) throws IOException {
+		
+		String amazonTitle = amazonProductTitle.replaceAll(" ", "+");
+		String amazonUrl = "https://www.amazon.co.uk/s?k=";
+		String amazonPrice = "->";
+		
+		try {
+			Connection connection = Jsoup.connect(amazonUrl+amazonTitle);
+			connection.userAgent("Mozilla/5.0");
+			Document document = connection.get();
+			Elements products = document.select(".s-result-item");
+			for(int i=0; i<3; i++) {
+				amazonPrice += " " + products.get(i).select(".a-offscreen").text();
+			}
+		} catch (IOException ioe) {
+			ioe.printStackTrace();
+		}
+		
+		return amazonPrice;
+	} 
 	
 	public String getUrl() {
 		return url;
