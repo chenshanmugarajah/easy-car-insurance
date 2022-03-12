@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/util 
+   		   http://www.springframework.org/schema/util/spring-util.xsd">
+	
+	<util:list id="scrapersList" value-type="chen.mdx.Scraper">
+		<ref bean="Argos" />
+	</util:list>
+    
+    <bean id="Argos" class="chen.shanmugarajah.Scraper">
+    	<property name="url" value="https://www.argos.co.uk/clearance/toys/c:30299/clearance:true/opt/page:"/>
+    	<property name="name" value="Argos"/>
+    	<property name="numberOfProducts" value=".dZytNV" />
+    	<property name="productsPerPage" value="60" />
+    	<property name="productListClass" value=".hiBlrl" />
+    	<property name="productObjectClass" value=".fweWIb" />
+    	<property name="productNameClass" value=".PQnCV" />
+    	<property name="productPriceClass" value=".glcjUO" />
+    	<property name="productUrlClass" value="a.PQnCV" />
+    </bean>
+	
+</beans>
