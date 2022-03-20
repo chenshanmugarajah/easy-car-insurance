@@ -22,5 +22,9 @@
     	<property name="productPriceClass" value=".glcjUO" />
     	<property name="productUrlClass" value="a.PQnCV" />
     </bean>
+    
+    <bean id="admiral" class="chen.shanmugarajah.InsuranceScraper">
+    	
+    </bean>
 	
 </beans>

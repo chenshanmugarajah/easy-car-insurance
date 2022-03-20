@@ -11,14 +11,22 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  */
 public class App 
 {
-    public static void main( String[] args ) throws IOException
+	public static void main( String[] args ) throws InterruptedException, IOException
     {
     	
-    	ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
+//    	ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
+//    	
+//    	Scraper argos = (Scraper) context.getBean("Argos");
+//    	
+//    	argos.getData();
     	
-    	Scraper argos = (Scraper) context.getBean("Argos");
+    	InsuranceScraper test = new InsuranceScraper();
     	
-    	argos.getData();
+    	String numberPlate = "ey09hfj";
+    	Boolean modified = false;
+    	Boolean owner = true;
+    	Boolean keeper = true;
+    	test.getData(numberPlate, modified, owner, keeper);
     	
     }
 }
