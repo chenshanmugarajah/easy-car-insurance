@@ -1,24 +1,20 @@
 package chen.shanmugarajah;
 
-import java.io.IOException;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-
-/**
- * Hello world!
- *
- */
 public class App 
 {
-    public static void main( String[] args ) throws IOException
+    public static void main( String[] args )
     {
     	
-    	ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
+    	System.setProperty("webdriver.chrome.driver", "C:\\\\Users\\\\Chen\\\\Downloads\\\\chromedriver.exe");
+    	WebDriver driver = new ChromeDriver();
+    	driver.get("https://mygocompare.gocompare.com/login/");
     	
-    	Scraper argos = (Scraper) context.getBean("Argos");
+    	System.out.println("Got page");
     	
-    	argos.getData();
+    	driver.quit();
     	
     }
 }
